@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Naux\Mail\SendCloudTemplate;
+use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -36,4 +38,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function sendPasswordResetNotification($token)
+    {
+        $data = [
+            'url' => route('password.reset', $token),
+        ];
+        $template = new SendCloudTemplate('zhihu_app_password_reset', $data);
+
+        Mail::raw($template, function ($message) {
+            $message->from('735624429@qq.com', 'Laravel');
+            $message->to($this->email);
+        });
+    }
 }
