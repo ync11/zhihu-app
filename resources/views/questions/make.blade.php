@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     @include('vendor.ueditor.assets')
     <div class="container">
@@ -34,8 +35,6 @@
                                     </span>
                                 @endif
                             </div>
-                                    <div>
-                                    </div>
                             <button class="btn btn-success float-right" type="submit">发布问题</button>
                         </form>
                     </div>
