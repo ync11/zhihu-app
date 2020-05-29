@@ -26,6 +26,11 @@ class QuestionRepository
         return Question::where('id', $id)->with('topics')->first();
     }
 
+    public function byId($id)
+    {
+        return Question::find($id);
+    }
+
     /**
      * @param array $attributes
      * @return mixed
