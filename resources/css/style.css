@@ -1,5 +1,6 @@
 .panel-body.content img {
     width: 100%;
+    border-style: hidden;
 }
 
 a.topic {
